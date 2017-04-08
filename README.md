@@ -99,3 +99,96 @@ tbmd5tm27slu        web                 replicated          0/1                 
 ```
 7. setelah ini kita mengetest halaman nginx yang telah dibuat pada IP: 192.168.99.100 / 192.168.99.101 / 192.168.99.102 / 192.168.99.103 / 192.168.99.104 / 192.168.99.105 seperti gambar berikut
 ![nginx in Chrome at 192.168.99.100](nginx.png)
+
+
+Berikut adalah hasil dari docker services diatas:
+```
+docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE
+tbmd5tm27slu        web                 replicated          1/1                 nginx:latest
+docker@manager1:~$ docker service inspect web 
+[
+    {
+        "ID": "tbmd5tm27sludydahy850d3dx",
+        "Version": {
+            "Index": 41
+        },
+        "CreatedAt": "2017-04-08T04:12:07.890265911Z",
+        "UpdatedAt": "2017-04-08T04:12:07.898361489Z",
+        "Spec": {
+            "Name": "web",
+            "Labels": {},
+            "TaskTemplate": {
+                "ContainerSpec": {
+                    "Image": "nginx:latest@sha256:e6693c20186f837fc393390135d8a598a96a833917917789d63766cab6c59582",
+                    "DNSConfig": {}
+                },
+                "Resources": {
+                    "Limits": {},
+                    "Reservations": {}
+                },
+                "RestartPolicy": {
+                    "Condition": "any",
+                    "MaxAttempts": 0
+                },
+                "Placement": {},
+                "ForceUpdate": 0
+            },
+            "Mode": {
+                "Replicated": {
+                    "Replicas": 1
+                }
+            },
+            "UpdateConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "MaxFailureRatio": 0
+            },
+            "RollbackConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "MaxFailureRatio": 0
+            },
+            "EndpointSpec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 80,
+                        "PublishedPort": 80,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            }
+        },
+        "Endpoint": {
+            "Spec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 80,
+                        "PublishedPort": 80,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            },
+            "Ports": [
+                {
+                    "Protocol": "tcp",
+                    "TargetPort": 80,
+                    "PublishedPort": 80,
+                    "PublishMode": "ingress"
+                }
+            ],
+            "VirtualIPs": [
+                {
+                    "NetworkID": "lns81scgybkwm52uf4smgh8c5",
+                    "Addr": "10.255.0.10/16"
+                }
+            ]
+        }
+    }
+]
+
+```

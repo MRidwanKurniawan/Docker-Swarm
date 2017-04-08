@@ -97,4 +97,5 @@ ID                  NAME                MODE                REPLICAS            
 tbmd5tm27slu        web                 replicated          0/1                 nginx:latest
 
 ```
-7. setelah ini kita mengetest halaman nginx yang telah dibuat pada IP: 192.168.99.100 / 192.168.99.101 / 192.168.99.102 / 192.168.99.103 / 192.168.99.104 / 192.168.99.105 seperti gambar berikut (nginx.jpg)
+7. setelah ini kita mengetest halaman nginx yang telah dibuat pada IP: 192.168.99.100 / 192.168.99.101 / 192.168.99.102 / 192.168.99.103 / 192.168.99.104 / 192.168.99.105 seperti gambar berikut
+![nginx in Chrome at 192.168.99.100](nginx.png)
